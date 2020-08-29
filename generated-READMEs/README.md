@@ -1,5 +1,5 @@
-# README Generator
-    ![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)
+# 
+![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)
 
 ### Table of Contents
 * [Description](#description)
@@ -27,14 +27,14 @@
 * [](https://github.com/undefined)
 
 ### Questions
-If you have any questions feel free to contact me on [GitHub](https://github.com/NTKonzen) or email me at nicholaskonzen@gmail.com.
+If you have any questions feel free to contact me on [GitHub](https://github.com/) or email me at .
 
 ---
 #### License
 
 MIT License
 
-Copyright (c) 2020 Nicholas Konzen
+Copyright (c) 2020 Nick Konzen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
