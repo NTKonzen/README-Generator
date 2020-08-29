@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 
+=======
+# README Generator
+>>>>>>> 813cea75f475598999c789a4a2d27a14d8a0b094
 ![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)
 
 ### Table of Contents
