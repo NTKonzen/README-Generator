@@ -56,6 +56,11 @@ const questions = [
         message: 'Enter your GitHub username:\n'
     },
     {
+        name: 'repo',
+        type: 'input',
+        message: 'Enter the name of the repository you\'re working in:\n'
+    },
+    {
         name: 'email',
         type: 'input',
         message: 'Enter your email:\n'
@@ -140,7 +145,7 @@ async function init() {
         answers.name = await inquirer.prompt({
             name: 'name',
             type: 'input',
-            message: 'Enter your full name in the format Last, First:'
+            message: 'Enter your full name:'
         });
         answers.name = answers.name.name
         answers.year = await inquirer.prompt({
@@ -152,10 +157,14 @@ async function init() {
         answers.license = licenses.MIT
         answers.license = answers.license.replace('[year]', answers.year)
         answers.license = answers.license.replace('[fullname]', answers.name)
-        answers.badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+        answers.badge = '![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)'
+        let licenseMIT = licenses.MIT.replace('[year]', answers.year)
+        licenseMIT = licenseMIT.replace('[fullname]', answers.name)
+        writeToFile('LICENSE', licenseMIT)
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
-        answers.badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+        answers.badge = '![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)'
+        writeToFile('LICENSE', licenses.GPL)
     }
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
