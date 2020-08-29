@@ -44,6 +44,16 @@ const questions = [
         type: 'input',
         message: `Enter individual tests separating each with a semicolon. If you don't want to run any tests, hit Enter. \n`
     },
+    {
+        name: 'GitHub',
+        type: 'input',
+        message: 'Enter your GitHub username:\n'
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: 'Enter your email:\n'
+    },
 ]
 
 function writeToFile(fileName, data) {
@@ -59,13 +69,14 @@ function writeToFile(fileName, data) {
 async function init() {
     const answers = await inquirer.prompt(questions)
 
-    answers.what = answers.what.trim()
-    answers.why = answers.why.trim()
-    answers.how = answers.how.trim()
-    answers.installation = answers.installation.trim()
-    answers.usage = answers.usage.trim()
-    answers.contributors = answers.contributors.trim()
-    answers.tests = answers.tests.trim()
+    answers.what = answers.what.trim();
+    answers.why = answers.why.trim();
+    answers.how = answers.how.trim();
+    answers.installation = answers.installation.trim();
+    answers.usage = answers.usage.trim();
+    answers.contributors = answers.contributors.trim();
+    answers.tests = answers.tests.trim();
+    answers.GitHub = answers.GitHub.trim();
 
 
     if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
@@ -87,7 +98,7 @@ async function init() {
 
     answers.installation = `1. ${answers.installation.replace(/;/g, '\n1. ')}`
     answers.usage = `1. ${answers.usage.replace(/;/g, '\n1. ')}`
-    answers.tests = `* ${answers.tests.replace(/;/g, '\n* ')}`
+    if (answers.tests !== '') answers.tests = `* ${answers.tests.replace(/;/g, '\n* ')}`
 
     let names = []
     let usernames = []
@@ -108,6 +119,8 @@ async function init() {
         answers.contributors.push(names[index], usernames[index])
     })
     answers.contributors = answers.contributors.join('')
+
+    answers.GitHub = `[GitHub](https://github.com/${answers.GitHub})`
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
 };
