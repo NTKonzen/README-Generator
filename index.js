@@ -34,6 +34,11 @@ const questions = [
         type: 'input',
         message: 'Enter the steps required to use the application separating each with a semicolon. \n'
     },
+    {
+        name: 'contributors',
+        type: 'input',
+        message: 'Enter each Contributor and Contributor\'s GitHub username separated by a colon. Separate individual users by semicolons. \nExample: (Contributor Name: ContributorUsername; Contributor Name 2: ContributorUsername2)\n'
+    },
 ]
 
 function writeToFile(fileName, data) {
@@ -54,6 +59,7 @@ async function init() {
     answers.how = answers.how.trim()
     answers.installation = answers.installation.trim()
     answers.usage = answers.usage.trim()
+    answers.contributors = answers.contributors.trim()
 
 
     if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
@@ -66,9 +72,32 @@ async function init() {
     if (answers.usage.slice(answers.usage.length - 1) === ';') {
         answers.usage = answers.usage.slice(0, -1)
     }
+    if (answers.contributors.slice(answers.contributors.length - 1) === ';') {
+        answers.contributors = answers.contributors.slice(0, -1)
+    }
 
     answers.installation = `1. ${answers.installation.replace(/;/g, '\n1. ')}`
     answers.usage = `1. ${answers.usage.replace(/;/g, '\n1. ')}`
+
+    let names = []
+    let usernames = []
+    answers.contributors = answers.contributors.split(';')
+    answers.contributors.forEach((value, index) => {
+        answers.contributors[index] = value.split(':')
+        let oldIndex = index
+        answers.contributors[index].forEach((value, index) => {
+            answers.contributors[oldIndex][index] = value.trim()
+        })
+        names.push(answers.contributors[index][0])
+        usernames.push(answers.contributors[index][1])
+    })
+    answers.contributors = []
+    names.forEach((value, index) => {
+        names[index] = `* [${value}]`
+        usernames[index] = `(https://github.com/${usernames[index]})\n`
+        answers.contributors.push(names[index], usernames[index])
+    })
+    answers.contributors = answers.contributors.join('')
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
 };

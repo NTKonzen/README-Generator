@@ -20,6 +20,10 @@ ${data.installation}
 ### Usage
 
 ${data.usage}
+
+### Contributors
+
+${data.contributors}
 `
 }
 
