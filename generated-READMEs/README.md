@@ -1,4 +1,4 @@
-# 
+# README Generator
     [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Table of Contents
@@ -6,28 +6,36 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributors](#contributors) 
+* [Tests](#tests)
 * [Questions](#questions)
 * [License](#license)
 
 ## Description ##
 
-   
+This is an application that dynamically generates a README.md file based on user input. I started this project because I needed a tool that helped me get past my README writers block that I get every time I sit down to write a README. The entire application is written in javascript and utilizes node and npm.   
 
 ### Installation ###
 
-1.  
+1. Download the .zip file of the repository from my GitHub
+1. Navigate to the repository in your preferred command terminal
+1. Run 'node index.js' and follow the instructions 
 
 ### Usage
 
-1. 
+1. Answer each question to the best of your ability
+1. Your README file will be generated in the 'Generated READMEs' folder
+
+### Tests
+
+* Try including or not including a semicolon at the end of the installation or test steps. Notice both do the same thing!
 
 
 ### Contributors
 
-* [](https://github.com/undefined)
+* [Nicholas Konzen](https://github.com/NTKonzen)
 
 ### Questions
-If you have any questions feel free to contact me on [GitHub](https://github.com/) or email me at .
+If you have any questions feel free to contact me on [GitHub](https://github.com/NTKonzen) or email me at nicholaskonzen@gmail.com.
 
 ---
 #### License
