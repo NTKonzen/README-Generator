@@ -1,5 +1,6 @@
 function generateMarkdown(data) {
     return `# ${data.title}
+    ${data.badge}
 
 ### Table of Contents
 * [Description](#description)

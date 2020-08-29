@@ -152,8 +152,10 @@ async function init() {
         answers.license = licenses.MIT
         answers.license = answers.license.replace('[year]', answers.year)
         answers.license = answers.license.replace('[fullname]', answers.name)
+        answers.badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
+        answers.badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
     }
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
