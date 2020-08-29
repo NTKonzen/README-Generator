@@ -11,4 +11,4 @@
 
 ## Description ##
 
-This application dynamically generates READMEs.
+What. Why. How.
