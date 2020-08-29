@@ -30,6 +30,11 @@ ${data.tests}
 ${data.contributors}
 ### Questions
 If you have any questions feel free to contact me on ${data.GitHub} or email me at ${data.email}.
+
+---
+#### License
+
+${data.license}
 `
 }
 

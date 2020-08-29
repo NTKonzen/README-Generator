@@ -2,6 +2,7 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 
 const generate = require('./utils/generateMarkdown.js').generateMarkdown
+const licenses = require('./utils/licenses.js')
 
 const questions = [
     {
@@ -53,6 +54,11 @@ const questions = [
         name: 'email',
         type: 'input',
         message: 'Enter your email:\n'
+    },
+    {
+        name: 'license',
+        type: 'input',
+        message: 'Choose your license! Enter either MIT or GPL\n'
     },
 ]
 
@@ -121,6 +127,12 @@ async function init() {
     answers.contributors = answers.contributors.join('')
 
     answers.GitHub = `[GitHub](https://github.com/${answers.GitHub})`
+
+    if (answers.license === 'MIT') {
+        answers.license = licenses.MIT
+    } else if (answers.license === 'GPL') {
+        answers.license = licenses.GPL
+    }
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
 };
