@@ -39,6 +39,11 @@ const questions = [
         type: 'input',
         message: 'Enter each Contributor and Contributor\'s GitHub username separated by a colon. Separate individual users by semicolons. \nExample: (Contributor Name: ContributorUsername; Contributor Name 2: ContributorUsername2)\n'
     },
+    {
+        name: 'tests',
+        type: 'input',
+        message: `Enter individual tests separating each with a semicolon. If you don't want to run any tests, hit Enter. \n`
+    },
 ]
 
 function writeToFile(fileName, data) {
@@ -60,6 +65,7 @@ async function init() {
     answers.installation = answers.installation.trim()
     answers.usage = answers.usage.trim()
     answers.contributors = answers.contributors.trim()
+    answers.tests = answers.tests.trim()
 
 
     if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
@@ -75,9 +81,13 @@ async function init() {
     if (answers.contributors.slice(answers.contributors.length - 1) === ';') {
         answers.contributors = answers.contributors.slice(0, -1)
     }
+    if (answers.tests.slice(answers.tests.length - 1) === ';') {
+        answers.tests = answers.tests.slice(0, -1)
+    }
 
     answers.installation = `1. ${answers.installation.replace(/;/g, '\n1. ')}`
     answers.usage = `1. ${answers.usage.replace(/;/g, '\n1. ')}`
+    answers.tests = `* ${answers.tests.replace(/;/g, '\n* ')}`
 
     let names = []
     let usernames = []

@@ -23,6 +23,9 @@
 
 ### Contributors
 
-* [Nicholas Konzen](https://github.com/NTKonzen)
-* [Chris Stead](https://github.com/CMStead)
+* [](https://github.com/undefined)
+
+### Tests
+
+* Try including or not including a semicolon at the end of the steps or test questions. Notice both do the same thing!
 

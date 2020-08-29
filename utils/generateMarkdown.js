@@ -23,7 +23,10 @@ ${data.usage}
 
 ### Contributors
 
-${data.contributors}
+${data.contributors}${data.tests !== '' ? `\n### Tests
+
+${data.tests}
+` : ''}
 `
 }
 
