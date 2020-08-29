@@ -16,6 +16,10 @@ ${data.what} ${data.why} ${data.how}
 ### Installation ###
 
 ${data.installation} 
+
+### Usage
+
+${data.usage}
 `
 }
 

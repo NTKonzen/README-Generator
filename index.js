@@ -29,6 +29,11 @@ const questions = [
         type: 'input',
         message: 'List out the steps of installation for your application separating each step with a semicolon.\n'
     },
+    {
+        name: 'usage',
+        type: 'input',
+        message: 'Enter the steps required to use the application separating each with a semicolon. \n'
+    },
 ]
 
 function writeToFile(fileName, data) {
@@ -48,6 +53,8 @@ async function init() {
     answers.why = answers.why.trim()
     answers.how = answers.how.trim()
     answers.installation = answers.installation.trim()
+    answers.usage = answers.usage.trim()
+
 
     if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
     if (answers.why.slice(answers.why.length - 1) !== '.' && answers.why !== '') answers.why = answers.why + '.'
@@ -56,8 +63,12 @@ async function init() {
     if (answers.installation.slice(answers.installation.length - 1) === ';') {
         answers.installation = answers.installation.slice(0, -1)
     }
+    if (answers.usage.slice(answers.usage.length - 1) === ';') {
+        answers.usage = answers.usage.slice(0, -1)
+    }
 
     answers.installation = `1. ${answers.installation.replace(/;/g, '\n1. ')}`
+    answers.usage = `1. ${answers.usage.replace(/;/g, '\n1. ')}`
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
 };
