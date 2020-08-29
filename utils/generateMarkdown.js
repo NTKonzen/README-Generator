@@ -11,7 +11,7 @@ function generateMarkdown(data) {
 
 ## Description ##
 
-${data.what} ${data.why} ${data.how}
+${data.what} ${data.why} ${data.how} ${data.additional}
 
 ### Installation ###
 

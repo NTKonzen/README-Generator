@@ -26,6 +26,11 @@ const questions = [
         message: 'Briefly describe what technologies and techniques you used to create this application. \nUse complete sentences.\n'
     },
     {
+        name: 'additional',
+        type: 'input',
+        message: 'Enter any additional description you want to add! \n'
+    },
+    {
         name: 'installation',
         type: 'input',
         message: 'List out the steps of installation for your application separating each step with a semicolon.\n'
@@ -78,6 +83,7 @@ async function init() {
     answers.what = answers.what.trim();
     answers.why = answers.why.trim();
     answers.how = answers.how.trim();
+    answers.additional = answers.additional.trim();
     answers.installation = answers.installation.trim();
     answers.usage = answers.usage.trim();
     answers.contributors = answers.contributors.trim();
@@ -88,6 +94,7 @@ async function init() {
     if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
     if (answers.why.slice(answers.why.length - 1) !== '.' && answers.why !== '') answers.why = answers.why + '.'
     if (answers.how.slice(answers.how.length - 1) !== '.' && answers.how !== '') answers.how = answers.how + '.'
+    if (answers.additional.slice(answers.additional.length - 1) !== '.' && answers.additional !== '') answers.additional = answers.how + '.'
 
     if (answers.installation.slice(answers.installation.length - 1) === ';') {
         answers.installation = answers.installation.slice(0, -1)
