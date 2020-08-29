@@ -8,7 +8,12 @@ const questions = [
         name: 'title',
         type: 'input',
         message: 'What is the title of your project?'
-    }
+    },
+    {
+        name: 'what',
+        type: 'input',
+        message: 'In its most basic form, what does this application do?\n'
+    },
 ]
 
 function writeToFile(fileName, data) {
@@ -23,6 +28,10 @@ function writeToFile(fileName, data) {
 
 async function init() {
     const answers = await inquirer.prompt(questions)
+
+    answers.what = answers.what.trim()
+
+    if (answers.what.slice(answers.what.length - 1) !== '.' && answers.what !== '') answers.what = answers.what + '.'
 
     writeToFile('./generated-READMEs/README.md', generate(answers))
 };
