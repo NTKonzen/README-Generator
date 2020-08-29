@@ -130,6 +130,21 @@ async function init() {
 
     if (answers.license === 'MIT') {
         answers.license = licenses.MIT
+        answers.name = await inquirer.prompt({
+            name: 'name',
+            type: 'input',
+            message: 'Enter your full name in the format Last, First:'
+        });
+        answers.name = answers.name.name
+        answers.year = await inquirer.prompt({
+            name: 'year',
+            type: 'input',
+            message: 'Enter the current year in the format YYYY:'
+        });
+        answers.year = answers.year.year
+        answers.license = licenses.MIT
+        answers.license = answers.license.replace('[year]', answers.year)
+        answers.license = answers.license.replace('[fullname]', answers.name)
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
     }
