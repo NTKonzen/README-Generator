@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
-generated-files
+generated-files/LICENSE
+generated-files/README.md
