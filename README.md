@@ -33,6 +33,7 @@ This is an application that dynamically generates a README.md file based on user
 ![Gif of the program being run](./screenshots/useage.gif)
 1. Your README file will be generated in the 'generated files' folder
 1. A new LICENSE file will ge generated in the 'generated files' folder. Be sure to include that in your project
+![Gif example of the location of the newly generated files](./screenshots.useage1.gif)
 
 ### Tests
 
