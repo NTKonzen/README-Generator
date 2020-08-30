@@ -73,7 +73,7 @@ const questions = [
 ]
 
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, { encoding: 'utf8' }, function (err) {
+    fs.writeFile(fileName, data, { encoding: 'utf8', recursive: true }, function (err) {
         if (err) {
             console.log(err.message)
         } else {
@@ -83,6 +83,10 @@ function writeToFile(fileName, data) {
 };
 
 async function init() {
+    if (!fs.existsSync('./generated-files')) {
+        fs.mkdir('./generated-files', (err) => { if (err) throw err })
+    }
+
     const answers = await inquirer.prompt(questions)
 
     answers.what = answers.what.trim();
