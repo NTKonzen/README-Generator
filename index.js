@@ -157,13 +157,13 @@ async function init() {
         answers.license = licenses.MIT
         answers.license = answers.license.replace('[year]', answers.year)
         answers.license = answers.license.replace('[fullname]', answers.name)
-        answers.badge = '![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)'
+        answers.badge = '[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)'
         let licenseMIT = licenses.MIT.replace('[year]', answers.year)
         licenseMIT = licenseMIT.replace('[fullname]', answers.name)
         writeToFile('LICENSE', licenseMIT)
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
-        answers.badge = '![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)'
+        answers.badge = '[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)'
         writeToFile('LICENSE', licenses.GPL)
     }
 

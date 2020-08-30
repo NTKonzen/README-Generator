@@ -1,5 +1,5 @@
 # README Generator
-![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)
+[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)
 
 ### Table of Contents
 * [Description](#description)
