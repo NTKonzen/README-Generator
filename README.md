@@ -31,8 +31,8 @@ This is an application that dynamically generates a README.md file based on user
 1. You will be prompted with a series of questions about yourself and your project
 1. Answer each question to the best of your ability
 ![Gif of the program being run](./screenshots/useage.gif)
-1. Your README file will be generated in the 'Generated READMEs' folder
-1. A new LICENSE file will ge generated in the same folder that the program is run. Be sure to include that in your project
+1. Your README file will be generated in the 'generated files' folder
+1. A new LICENSE file will ge generated in the 'generated files' folder. Be sure to include that in your project
 
 ### Tests
 

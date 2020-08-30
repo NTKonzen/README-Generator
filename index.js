@@ -160,14 +160,14 @@ async function init() {
         answers.badge = '[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)'
         let licenseMIT = licenses.MIT.replace('[year]', answers.year)
         licenseMIT = licenseMIT.replace('[fullname]', answers.name)
-        writeToFile('LICENSE', licenseMIT)
+        writeToFile('./generated-files/LICENSE', licenseMIT)
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
         answers.badge = '[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)'
-        writeToFile('LICENSE', licenses.GPL)
+        writeToFile('./generated-files/LICENSE', licenses.GPL)
     }
 
-    writeToFile('./generated-READMEs/README.md', generate(answers))
+    writeToFile('./generated-files/README.md', generate(answers))
 };
 
 init();
