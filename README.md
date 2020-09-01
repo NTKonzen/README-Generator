@@ -16,6 +16,8 @@ This is an application that dynamically generates a README.md file based on user
 
 ### Installation ###
 
+[Watch the tutorial](https://youtu.be/ZK9oT47J58o)
+
 1. This project requires Node.js. If you don't have Node.js installed you can find it [here](https://nodejs.org/en/download/)
 1. Download the README-Generator-master.zip file from my [GitHub Repository](https://github.com/NTKonzen/README-Generator) and unzip it
 ![Screenshot of Download](./screenshots/downloadButton.png)
@@ -27,6 +29,8 @@ This is an application that dynamically generates a README.md file based on user
 1. Run 'node index.js' and follow the instructions 
 
 ### Usage
+
+[Watch the tutorial](https://youtu.be/ZK9oT47J58o)
 
 1. You will be prompted with a series of questions about yourself and your project
 1. Answer each question to the best of your ability
