@@ -1,5 +1,5 @@
 const fs = require('fs')
-const inquirer = require('inquirer')
+const { prompt } = require('inquirer')
 
 const generate = require('./utils/generateMarkdown.js').generateMarkdown
 const licenses = require('./utils/licenses.js')
@@ -87,7 +87,7 @@ async function init() {
         fs.mkdir('./generated-files', (err) => { if (err) throw err })
     }
 
-    const answers = await inquirer.prompt(questions)
+    const answers = await prompt(questions)
 
     answers.what = answers.what.trim();
     answers.why = answers.why.trim();
@@ -146,13 +146,13 @@ async function init() {
 
     if (answers.license === 'MIT') {
         answers.license = licenses.MIT
-        answers.name = await inquirer.prompt({
+        answers.name = await prompt({
             name: 'name',
             type: 'input',
             message: 'Enter your full name:'
         });
         answers.name = answers.name.name
-        answers.year = await inquirer.prompt({
+        answers.year = await prompt({
             name: 'year',
             type: 'input',
             message: 'Enter the current year in the format YYYY:'
