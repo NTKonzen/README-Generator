@@ -65,25 +65,35 @@ function writeToFile(fileName, data) {
     })
 };
 
-async function getList(initMessage, number, answers) {
+async function getList({ message, valid: { regEx, example } = { regEx: undefined }, number, answers, }) {
     return new Promise(async (res, rej) => {
-        if (initMessage) console.log("\x1b[1m", initMessage);
+        if (message) console.log("\x1b[1m", message);
         if (!number) number = 1;
         if (!answers) answers = [];
+        let valid = true;
 
-        const { answer } = await prompt({
+        let { answer } = await prompt({
             message: number.toString() + ". ",
             type: "input",
             name: "answer"
         });
         answer = answer.trim();
 
-        if (!answer || answer === '') {
+        if (regEx && regEx.test(answer) === false && answer !== '') {
+            valid = false;
+        }
+
+        if (!valid) {
+            console.log("\x1b[1m", `That doesn't match the required format. Try entering something like this:\n ${example}`);
+            const list = await getList({ valid: { regEx, example }, answers, number })
+            res(list)
+        } else if (!answer || answer === '') {
             res(answers)
             return answers
         } else {
             answers.push(answer)
-            const list = await getList(undefined, number + 1, answers)
+            number++;
+            const list = await getList({ valid: { regEx, example }, answers, number })
             res(list)
         }
     })
@@ -96,10 +106,16 @@ async function init() {
 
     const answers = await prompt(descriptionQuestions)
 
-    answers.installation = await getList("List out the steps of installation for your application:");
-    answers.usage = await getList("Enter the steps required to use the application:");
-    answers.contributors = await getList(`Enter each Contributor and Contributor's GitHub username separated by a colon.\n Example: "Nicholas Konzen: NTKonzen"`);
-    answers.tests = await getList("List out the different tests for your application. If you don't want to include any tests, hit Enter.")
+    answers.installation = await getList({ message: "List out the steps of installation for your application:" });
+    answers.usage = await getList({ message: "Enter the steps required to use the application:" });
+    answers.contributors = await getList({
+        message: `Enter each Contributor and Contributor's GitHub username separated by a colon.`,
+        valid: {
+            regEx: /([\w *]+ *: *\w+ *)/,
+            example: "Nicholas Konzen: NTKonzen"
+        }
+    });
+    answers.tests = await getList({ message: "List out the different tests for your application. If you don't want to include any tests, hit Enter." })
 
     const infoAnswers = await prompt(infoQuestions);
     Object.keys(infoAnswers).forEach(key => {
