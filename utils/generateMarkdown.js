@@ -1,41 +1,55 @@
-function generateMarkdown(data) {
-    return `# ${data.title}
-${data.badge}
+function generateMarkdown({
+    title,
+    badge,
+    tests,
+    what,
+    why,
+    how,
+    additional,
+    installation,
+    usage,
+    contributors,
+    GitHub,
+    email,
+    license
+}) {
+    return `# ${title}
+${badge}
 
 ### Table of Contents
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Contributors](#contributors) ${data.tests !== '' ? '\n* [Tests](#tests)' : ''}
+* [Contributors](#contributors) ${tests !== '' ? '\n* [Tests](#tests)' : ''}
 * [Questions](#questions)
 * [License](#license)
 
 ## Description ##
 
-${data.what} ${data.why} ${data.how} ${data.additional}
+${what} ${why} ${how} ${additional}
 
 ### Installation ###
 
-${data.installation} 
+${installation} 
 
 ### Usage
 
-${data.usage}
-${data.tests !== '' ? `\n### Tests
+${usage}
+${tests !== '' ? `\n### Tests
 
-${data.tests}
+${tests}
 ` : ''}
 ### Contributors
 
-${data.contributors}
+${contributors}
 
 ### Questions
-If you have any questions feel free to contact me on ${data.GitHub} or email me at ${data.email}.
+If you have any questions feel free to contact me on ${GitHub} or email me at ${email}.
 
 ---
 #### License
 
-${data.license}
+${license}
 `
 }
 
