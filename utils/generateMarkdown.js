@@ -1,3 +1,5 @@
+function printIfExists(string, value) { return (!value || value === '') ? '' : string }
+
 function generateMarkdown({
     title,
     badge,
@@ -13,44 +15,49 @@ function generateMarkdown({
     email,
     license
 }) {
-    return `# ${title}
-${badge}
 
-### Table of Contents
-* [Description](#description)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contributors](#contributors) ${tests !== '' ? '\n* [Tests](#tests)' : ''}
-* [Questions](#questions)
-* [License](#license)
+    let markdown =
+        `# ${title} #\n` +
+        `${printIfExists(badge, badge)}\n` +
+        `\n` +
+        `### Table of Contents ###\n` +
+        `* [Description](#description)\n` +
+        `${printIfExists('* [Installation](#installation)\n', installation)}` +
+        `${printIfExists('* [Usage](#usage)\n', usage)}` +
+        `${printIfExists('* [Contributors](#contributors)\n', contributors)}` +
+        `${printIfExists('* [Tests](#tests)\n', tests)}` +
+        '* [Questions](#questions)\n' +
+        '* [License](#license)\n' +
+        '\n' +
+        '## Description ##\n' +
+        '\n' +
+        `${what} ${why} ${how} ${additional}`.trim() + '\n' +
+        '\n' +
+        `${printIfExists(`### Installation ###\n` +
+            `\n` +
+            `${installation}\n` +
+            `\n`, installation)}` +
+        `${printIfExists(`### Usage ###\n` +
+            `\n` +
+            `${usage}\n` +
+            `\n`, usage)}` +
+        `${printIfExists(`### Tests ###\n` +
+            `\n` +
+            `${tests}\n` +
+            `\n`, tests)}` +
+        `${printIfExists(`### Contributors ###\n` +
+            `\n` +
+            `${contributors}\n` +
+            `\n`, contributors)}` +
+        `### Questions ###\n` +
+        `If you have any questions feel free to contact me on ${GitHub} or email me at ${email}.\n` +
+        `\n` +
+        `---\n` +
+        `#### License #### \n` +
+        `\n` +
+        `${license}`
 
-## Description ##
-
-${what} ${why} ${how} ${additional}
-
-### Installation ###
-
-${installation} 
-
-### Usage
-
-${usage}
-${tests !== '' ? `\n### Tests
-
-${tests}
-` : ''}
-### Contributors
-
-${contributors}
-
-### Questions
-If you have any questions feel free to contact me on ${GitHub} or email me at ${email}.
-
----
-#### License
-
-${license}
-`
+    return markdown;
 }
 
 module.exports = { generateMarkdown: generateMarkdown }

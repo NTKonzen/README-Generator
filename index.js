@@ -24,6 +24,11 @@ async function init() {
 
     const answers = await prompt(descriptionQuestions)
 
+    Object.keys(answers).slice(1).forEach(key => {
+        const value = answers[key]
+        if ((value !== '') && (value[value.length - 1] !== '.')) answers[key] += '.'
+    })
+
     answers.installation = await getList({ message: "List out the steps of installation for your application:" });
     answers.usage = await getList({ message: "Enter the steps required to use the application:" });
     answers.contributors = await getList({
@@ -44,7 +49,6 @@ async function init() {
         const value = answers[key]
         if (typeof value === "string") {
             answers[key] = value.trim()
-            console.log("string")
         } else if (Array.isArray(value) && key !== 'contributors') {
             let parsedList = '';
             let num = 0;
