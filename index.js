@@ -70,28 +70,45 @@ async function init() {
         }
     })
 
-    answers.GitHub = `[GitHub](https://github.com/${answers.GitHub})`
+    answers.GitHub = `[GitHub](https://github.com/${answers.username})`
 
     if (answers.license === 'MIT') {
         answers.license = licenses.MIT
         answers.name = await prompt({
             name: 'name',
             type: 'input',
-            message: 'Enter your full name:'
+            message: 'Enter your full name:',
+            validate: function (input) {
+                return new Promise((res, rej) => {
+                    input = input.trim()
+                    if (!input || input == '') rej('Your full name is required!')
+                    else res(true)
+                });
+            }
         });
         answers.name = answers.name.name
         answers.year = await prompt({
             name: 'year',
             type: 'input',
-            message: 'Enter the current year in the format YYYY:'
+            message: 'Enter the current year in the format YYYY:',
+            validate: function (input) {
+                return new Promise((res, rej) => {
+                    input = input.trim()
+                    parsedInput = parseInt(input)
+
+                    if (!input || input == '') rej('The current year is required!')
+                    else if (isNaN(parsedInput)) rej('The entered year must be a number!')
+                    else if (input.length !== 4) rej('When entering the year, please follow the format YYYY')
+                    else res(true)
+                });
+            }
         });
         answers.year = answers.year.year
         answers.license = licenses.MIT
         answers.license = answers.license.replace('[year]', answers.year)
         answers.license = answers.license.replace('[fullname]', answers.name)
-        answers.badge = '[![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)'
-        let licenseMIT = licenses.MIT.replace('[year]', answers.year)
-        licenseMIT = licenseMIT.replace('[fullname]', answers.name)
+        answers.badge = `[![GitHub](https://img.shields.io/github/license/${answers.username}/${answers.repo})](#license)`
+        let licenseMIT = licenses.MIT.replace('[year]', answers.year).replace('[fullname]', answers.name)
         writeToFile('./generated-files/LICENSE', licenseMIT)
     } else if (answers.license === 'GPL') {
         answers.license = licenses.GPL
