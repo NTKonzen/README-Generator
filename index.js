@@ -33,8 +33,8 @@ async function init() {
     })
 
     // The GetList function will render a numbered list to the client
-    answers.installation = await getList({ message: "List out the steps of installation for your application:" });
-    answers.usage = await getList({ message: "Enter the steps required to use the application:" });
+    answers.installation = await getList({ message: "List out the steps of installation for your application. When you're finished, press Enter." });
+    answers.usage = await getList({ message: "Enter the steps required to use the application. When you're finished, press Enter." });
     answers.contributors = await getList({
         message: `Enter each Contributor and Contributor's GitHub username separated by a colon.`,
         valid: {
