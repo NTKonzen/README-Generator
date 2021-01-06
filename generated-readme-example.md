@@ -1,55 +1,47 @@
-# README Generator
+# README Generator #
 [![GitHub](https://img.shields.io/github/license/NTKonzen/README-Generator)](#license)
 
-### Table of Contents
+### Table of Contents ###
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Contributors](#contributors) 
-* [Tests](#tests)
+* [Contributors](#contributors)
 * [Questions](#questions)
 * [License](#license)
 
 ## Description ##
 
-This is an application that dynamically generates a README.md file based on user input. I started this project because I needed a tool that helped me get past my README writers block that I get every time I sit down to write a README. The entire application is written in javascript and utilizes node and npm.   
+This is an application that dynamically generates a README.md file based on user input. I started this project because I needed a tool that helped me get past my README writers block that I get every time I sit down to write a README. The entire application is written in javascript and utilizes NPM with the Inquirer package along with the built-in File System package("fs"). For details on [how to install](#installation) or [how to use](#usage), see below.
 
 ### Installation ###
 
 1. This project requires Node.js. If you don't have Node.js installed you can find it [here](https://nodejs.org/en/download/)
-1. Download the README-Generator-master.zip file from my [GitHub Repository](https://github.com/NTKonzen/README-Generator) and unzip it
-1. Move the unzipped folder to your preferred location in your file system
-1. Navigate to the repository in your preferred command terminal
-1. Run 'npm install' to install all the dependencies in the package.json file
-1. Run 'node index.js' and follow the instructions 
+2. Download the README-Generator-master.zip file from my [GitHub Repository](https://github.com/NTKonzen/README-Generator) and unzip it
+3. Move the unzipped folder to your preferred location in your file system
+4. Navigate to the repository in your preferred command terminal
+5. Run 'npm install' to install all the dependencies in the package.json file
+6. Run ```npm start``` or ```node index.js``` and follow the instructions
 
-### Usage
+### Usage ###
 
-1. You will be prompted with a series of questions about yourself and your project
-1. Answer each question to the best of your ability
-1. Your README file will be generated in the 'generated files' folder
-1. A new LICENSE file will ge generated in the 'generated files' folder. Be sure to include that in your project
+1. Run ```npm start``` or ```node index.js``` to start the program
+2. Answer each question to the best of your ability following any instructions
+3. Your README file will be generated in the 'generated files' folder
+4. A new LICENSE file will ge generated in the 'generated files' folder. Be sure to include that in your project
 
-### Tests
-
-* Try including or not including a semicolon at the end of the installation or test steps. Notice both do the same thing!
-* Run the program twice and try a different license option each time
-
-
-### Contributors
+### Contributors ###
 
 * [Nicholas Konzen](https://github.com/NTKonzen)
-* [Nicholas Konzen](https://github.com/NTKonzen)
 
-### Questions
+### Questions ###
 If you have any questions feel free to contact me on [GitHub](https://github.com/NTKonzen) or email me at nicholaskonzen@gmail.com.
 
 ---
-#### License
+#### License #### 
 
 MIT License
 
-Copyright (c) 2020 Nicholas Konzen
+Copyright (c) 2021 Nicholas Konzen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
